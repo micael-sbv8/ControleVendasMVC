@@ -25,7 +25,9 @@ namespace VendasControle.Controllers
 
         public IActionResult Privacy()
         {
+            ViewData["Professor"] = "Nelio alvez";
             return View();
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

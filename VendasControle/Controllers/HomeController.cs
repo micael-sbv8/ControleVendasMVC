@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using VendasControle.Models;
+using VendasControle.Models.ViewModels;
 
 namespace VendasControle.Controllers
 {

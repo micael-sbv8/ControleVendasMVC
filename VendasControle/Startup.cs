@@ -30,14 +30,16 @@ namespace VendasControle
             string stringDeConexao = Configuration.GetConnectionString("VendasControleContext");
             services.AddDbContext<VendasControleContext>(options =>
                     options.UseMySql(stringDeConexao, ServerVersion.AutoDetect(stringDeConexao)));
+            services.AddScoped<SeedingService>();        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, SeedingService seedingService)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                seedingService.Seed();
             }
             else
             {

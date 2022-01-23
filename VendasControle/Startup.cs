@@ -8,8 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using VendasControle.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace VendasControle
 {
@@ -27,8 +27,9 @@ namespace VendasControle
         {
             services.AddControllersWithViews();
 
+            string stringDeConexao = Configuration.GetConnectionString("VendasControleContext");
             services.AddDbContext<VendasControleContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("VendasControleContext")));
+                    options.UseMySql(stringDeConexao, ServerVersion.AutoDetect(stringDeConexao)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

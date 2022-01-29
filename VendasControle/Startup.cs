@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using VendasControle.Data;
 using Microsoft.EntityFrameworkCore;
+using VendasControle.Services;
 
 namespace VendasControle
 {
@@ -30,7 +31,8 @@ namespace VendasControle
             string stringDeConexao = Configuration.GetConnectionString("VendasControleContext");
             services.AddDbContext<VendasControleContext>(options =>
                     options.UseMySql(stringDeConexao, ServerVersion.AutoDetect(stringDeConexao)));
-            services.AddScoped<SeedingService>();        
+            services.AddScoped<SeedingService>();
+            services.AddScoped<SellerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
